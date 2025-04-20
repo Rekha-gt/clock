@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif ;
+}
+body {  
+    height: 100vh;
+    background-color: #ffddd2;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-container {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    background: #282827;
+    min-height: 350px;
+    border: 1px solid #323232;
+    border-radius: 10%;
+    border-bottom-left-radius: 260px;
+    border-bottom-right-radius: 260px;
+    border-top-right-radius: 260px;
+    border-top-left-radius: 260px;
+    box-shadow: 50px 25px 15px rgba(0, 0, 0, 0.50);
+      /* shorthand of multiple margin value */
+    inset: 70px 10px 10px  rgba(0.25, 0, 0, 0) ;
+    inset: 20px 5px 5px  rgba(0.2, 0, 0, 0); 
+    inset: 15px -5px -5px  rgba(0.75, 0, 0, 0);
+}
+
+.analog-clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 3px solid #343434;
+    border-radius: 50%;
+    background: #2c2e30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analog-clock::before {
+    content: '';
+    position: absolute;
+    justify-content: center;
+    height: 8px;
+    width: 8px;
+    border: 2px solid #e3bd00;
+    border-radius: 50%;
+    z-index: 10000;
+}
+/* numbers 1 to 12 */
+.analog-clock span {
+    position: absolute;
+    inset: 0px;
+    color: #eddcb0;
+    text-align: center;
+    transform: rotate(calc(30deg * var(--i)));
+    /* 360 / 12 = 30deg */
+}
+
+/* arrange numbers in inline */
+.analog-clock span b {
+    font-size: 1em;
+    opacity: 100%;
+    font-weight: 400;
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+}
+
+/*  For Inside circle and needles of the watch */
+.circle {
+    position:absolute;
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;  
+} 
+
+/* This code for needles of the watch */
+.circle i {
+    position: absolute;
+    width: 3px;
+    height: 47%;
+    background:var(--clr);
+    opacity: 0.75;
+    transform-origin: bottom;
+    transform: scaleY(0.5);
+} 
+
+/* hour hand width control */
+.circle:nth-child(1) i {
+    width: 2px;
+}
+.circle:nth-child(2) i {
+    width: 3px;
+}
+
+/* minutes hand contolling */
+.circle2 {
+    width: 120px;
+    height: 120px;
+    z-index: 9;
+}
+
+/* second hand controlling */
+.circle3 {
+    width: 90px;
+    height: 90px;
+    z-index: 8;
+}
+
+/* for 3 dots orange, white & green */
+.circle::before {
+    content: '';
+    position: absolute;
+    top: -3.5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 0 15px var(--clr), 0 0 45px var(--clr);
+}
+/* Digital clock styles apply */
+
+#time {
+    margin-top: 35px;
+    display: flex;
+    padding: 5px 10px;
+    font-size: 1.5em;
+    font-weight: 250;
+    border: 2px solid rgba(0, 0, 0, 0.50);
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+   
+}
+#time span {
+    position: relative;
+    width: 35px;
+    text-align: center;
+    font-weight:250;
+    color: var(--clr);
+}
+
+#time span:nth-child(1)::after,
+#time span:nth-child(2)::after {
+    content: ':';
+    position: absolute;
+    right: -2px;
+}
+
+#time span:last-child {
+    font-size: .6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time span:nth-child(2)::after {
+    animation: animate 1s steps(1) infinite;
+}
+
+@keyframes animate {
+
+    0%
+    {
+        opacity: 1;
+    }
+
+    50%
+    {
+        opacity: 0;
+    }
+}
